@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+                    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="answers.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css" type="text/css" media="screen" />
+<script type="text/javascript" src="http://code.jquery.com/qunit/git/qunit.js"></script>
+
+  <script>
+  $(document).ready(function(){
+    
+      readSingleFile({name:"testfile1.txt"},"#testfile1");
+      readSingleFile({name:"testfile2.txt"},"#testfile2");
+      readSingleFile({name:"testfile3.txt"},"#testfile3");
+      
+    module("Triangle Traversal Unit Tests");
+    
+    test("Testing with File #1", function() {
+      expect(3);
+      var test1result = findLowestSumPath($("#testfile1 pre").html()).data;
+      equal(test1result.sum,12,
+        'Expected sum=12 as the result, result was: sum=' + test1result.sum);  
+      equal(test1result.path,"1,3,4,4",
+        'Expected path=\"1,3,4,4\" as the result, result was: ' + test1result.path);  
+      equal(test1result.lastPos,3,
+        'Expected lastPos=3 as the result, result was: ' + test1result.lastPos);  
+    });
+    
+    test("Testing with File #2", function() {
+      expect(3);
+      var test1result = findLowestSumPath($("#testfile2 pre").html()).data;
+      equal(test1result.sum,94,
+        'Expected sum=94 as the result, result was: sum=' + test1result.sum);  
+      equal(test1result.path,"14,33,12,26,7,2",
+        'Expected path=\"14,33,12,26,7,2\" as the result, result was: ' + test1result.path);  
+      equal(test1result.lastPos,2,
+        'Expected lastPos=2 as the result, result was: ' + test1result.lastPos);  
+    });
+    
+    test("Testing with File #3", function() {
+      expect(3);
+      var test1result = findLowestSumPath($("#testfile3 pre").html()).data;
+      equal(test1result.sum, 259,
+        'Expected sum=179 as the result, result was: sum=' + test1result.sum);  
+      equal(test1result.path,"81,12,32,59,19,11,45",
+        'Expected path=\"81,12,32,59,19,11,45\" as the result, result was: ' + test1result.path);  
+      equal(test1result.lastPos,2,
+        'Expected lastPos=2 as the result, result was: ' + test1result.lastPos);  
+    });
+
+
+  });
+  </script>
+
+  <style>
+    #filescontainer {
+      width:100%;
+      height:170px;
+      margin: 5px 5px 20px 5px;
+    }
+    div[id*="filecontainer"] {
+        max-height: 300px;
+        height:160px;
+        max-width:400px;
+        padding: 10px 10px 0px 10px ;
+        border: 1px dotted blue;
+        float:left;
+        margin: 5px;
+        display: block;
+    }
+
+</style>
+</head>
+<body>
+  <h1 id="qunit-header">Triangle Traversal QUnit Unit Tests</h1>
+ <h2 id="qunit-banner"></h2>
+ <div id="qunit-testrunner-toolbar"></div>
+ <h2 id="qunit-userAgent"></h2>
+ <div id="filescontainer">
+  <div id="filecontainer1">Test File 1<div id="testfile1"></div></div>
+  <div id="filecontainer2">Test File 2<div id="testfile2"></div></div>
+  <div id="filecontainer3">Test File 3<div id="testfile3"></div></div>
+ </div>
+ <ol id="qunit-tests"></ol>
+ <div id="qunit-fixture">test markup, will be hidden</div>
+</body>
+</html>
